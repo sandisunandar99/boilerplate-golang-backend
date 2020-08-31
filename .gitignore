@@ -1,0 +1,16 @@
+/node_modules
+/bower_components
+
+/.idea
+.project
+.classpath
+*.launch
+.settings/
+
+.DS_Store
+Thumbs.db
+
+*.db
+.vscode/
+
+boilerplate-golang-backend
