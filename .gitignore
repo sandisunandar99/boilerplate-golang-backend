@@ -12,5 +12,7 @@ Thumbs.db
 
 *.db
 .vscode/
+.env
+
 
 boilerplate-golang-backend

@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:4.2
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+    #   MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+        - "27017:27017"
+    restart: always
+    volumes:
+        - mongodb:/data/db
+        - mongodb_config:/data/configdb
+    networks:
+        - boilerplate-golang-backend
+
+  api:
+    container_name: boilerplate-golang-backend
+    build:
+        context: ./
+        dockerfile: development.Dockerfile
+    volumes:
+        - .:/usr/src/app
+    ports:
+        - 1234:1234
+    env_file:
+        - .env
+    depends_on:
+        - mongodb
+    networks:
+        - boilerplate-golang-backend
+
+volumes:
+    mongodb:
+    mongodb_config:
+
+networks:
+    boilerplate-golang-backend:
+      driver: bridge
