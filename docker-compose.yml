@@ -19,7 +19,7 @@ services:
   api:
     container_name: boilerplate-golang-backend
     build:
-        context: ./
+        context: .
         dockerfile: development.Dockerfile
     volumes:
         - .:/usr/src/app
